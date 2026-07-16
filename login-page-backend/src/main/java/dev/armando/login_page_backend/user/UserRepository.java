@@ -1,0 +1,9 @@
+package dev.armando.login_page_backend.user;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface UserRepository extends JpaRepository<User, UUID> {
+
+}
