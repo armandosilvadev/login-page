@@ -1,5 +1,6 @@
 package dev.armando.login_page_backend.auth;
 
+import dev.armando.login_page_backend.infra.security.TokenService;
 import dev.armando.login_page_backend.user.User;
 import dev.armando.login_page_backend.user.UserRepository;
 import jakarta.validation.Valid;
@@ -21,12 +22,17 @@ public class AuthenticationController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationResponse data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.username(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((User)auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponse(token));
     }
 
     @PostMapping("/register")
