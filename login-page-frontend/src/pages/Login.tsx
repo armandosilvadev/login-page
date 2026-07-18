@@ -6,6 +6,7 @@ import { useState } from 'react';
 const Test = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const { mutate } = useLogin();
   const navigate = useNavigate();
@@ -45,11 +46,17 @@ const Test = () => {
         <div>
           <label htmlFor='password'>Password: </label>
           <input
-            type='text'
-            name='username'
-            id='username'
+            type={showPassword ? 'text' : 'password'}
+            name='password'
+            id='password'
             required
             onChange={e => setPassword(e.target.value)}
+          />
+          <input
+            type='checkbox'
+            name='showPassword'
+            id='showPassword'
+            onChange={e => setShowPassword(e.target.checked)}
           />
         </div>
         <button type='submit'>Login</button>
