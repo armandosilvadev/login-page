@@ -1,16 +1,42 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useRegister from '../auth/hooks/useRegister';
+import type { LoginData } from '../types/loginData';
 
 const Register = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const { mutate } = useRegister();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    e.target.reset();
+    if (confirmPassword !== password) {
+      setPasswordsMatch(false);
+      return;
+    } else {
+      setPasswordsMatch(true);
+    }
+
+    const registerData: LoginData = {
+      username,
+      password,
+    };
+
+    mutate(registerData, {
+      onSuccess: response => {
+        const userData = response.data;
+
+        localStorage.setItem('token', userData.token);
+
+        navigate('/dashboard');
+      },
+    });
   };
 
   return (
@@ -34,6 +60,7 @@ const Register = () => {
             name='password'
             id='password'
             required
+            value={password}
             onChange={e => setPassword(e.target.value)}
           />
           <input
@@ -51,9 +78,15 @@ const Register = () => {
             name='confirmPassword'
             id='confirmPassword'
             required
+            value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
           />
         </div>
+        {passwordsMatch ? (
+          ''
+        ) : (
+          <p style={{ color: 'red' }}>Passwords do not match</p>
+        )}
         <button type='submit'>Register</button>
         <p>
           Already have an account?
