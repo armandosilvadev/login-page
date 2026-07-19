@@ -20,9 +20,7 @@ const Test = () => {
     };
 
     mutate(loginData, {
-      onSuccess: response => {
-        const userData = response.data;
-
+      onSuccess: userData => {
         localStorage.setItem('token', userData.token);
         navigate('/dashboard');
       },
