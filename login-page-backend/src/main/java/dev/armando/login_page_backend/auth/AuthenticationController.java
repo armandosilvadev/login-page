@@ -3,9 +3,9 @@ package dev.armando.login_page_backend.auth;
 import dev.armando.login_page_backend.infra.security.TokenService;
 import dev.armando.login_page_backend.user.User;
 import dev.armando.login_page_backend.user.UserRepository;
+import dev.armando.login_page_backend.user.exception.UserAlreadyExistsException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,7 +33,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<LoginResponse> register(@RequestBody @Valid RegisterRequest data) {
-        if (this.userRepository.findByUsername(data.username()) != null) return ResponseEntity.badRequest().build();
+        if (this.userRepository.findByUsername(data.username()) != null) throw new UserAlreadyExistsException();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
         User newUser = new User(data.username(), encryptedPassword);
