@@ -3,6 +3,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Dashboard from '../pages/Dashboard';
+import ProtectedRoute from '../auth/components/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,13 @@ const router = createBrowserRouter([
     Component: Register,
   },
   {
-    path: '/dashboard',
-    Component: Dashboard,
+    Component: ProtectedRoute,
+    children: [
+      {
+        path: '/dashboard',
+        Component: Dashboard,
+      },
+    ],
   },
 ]);
 
