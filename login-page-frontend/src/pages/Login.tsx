@@ -32,9 +32,13 @@ const Test = () => {
       onError: error => {
         const axiosError = error as AxiosError<ApiError>;
 
-        setErrorMessage(
-          axiosError.response?.data.message ?? 'Error while trying to login.',
-        );
+        if (axiosError.response?.data.status === 401) {
+          setErrorMessage(
+            axiosError.response?.data.message ?? 'Error while trying to login.',
+          );
+        } else {
+          setErrorMessage('Error while trying to login.')
+        }
       },
     });
   };
