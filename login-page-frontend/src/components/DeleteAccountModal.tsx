@@ -41,9 +41,9 @@ const DeleteAccountModal = ({
       onError: error => {
         const axiosError = error as AxiosError<ApiError>;
 
-        const status = axiosError.response?.data.status;
+        const axiosData = axiosError.response?.data;
 
-        if (status === 401) setErrorMessage('Invalid password.');
+        if (axiosData?.status === 401) setErrorMessage('Invalid password.');
         else setErrorMessage('Error while trying to delete account.');
       },
     });
