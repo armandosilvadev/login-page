@@ -12,7 +12,7 @@ async function postData(data: LoginData): AxiosPromise<UserData> {
 export default function useRegister() {
   const mutate = useMutation({
     mutationFn: postData,
-    retry: 2,
+    retry: 1,
   });
 
   return mutate;

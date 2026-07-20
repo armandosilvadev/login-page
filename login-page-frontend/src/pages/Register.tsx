@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useRegister from '../auth/hooks/useRegister';
 import type { LoginData } from '../types/loginData';
+import type { AxiosError } from 'axios';
+import type { ApiError } from '../api/types/ApiError';
 
 const Register = () => {
   const [username, setUsername] = useState<string>('');
@@ -9,8 +11,9 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const { mutate } = useRegister();
+  const { mutate, isError, isPending } = useRegister();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -35,6 +38,19 @@ const Register = () => {
         localStorage.setItem('token', userData.token);
 
         navigate('/dashboard');
+      },
+      onError: error => {
+        const axiosError = error as AxiosError<ApiError>;
+
+        const axiosData = axiosError.response?.data;
+
+        if (axiosData?.status === 409) {
+          setErrorMessage(
+            axiosData.message ?? 'Error while trying to register.',
+          );
+        } else {
+          setErrorMessage('Error while trying to register.');
+        }
       },
     });
   };
@@ -85,9 +101,15 @@ const Register = () => {
         {passwordsMatch ? (
           ''
         ) : (
-          <p style={{ color: 'red' }}>Passwords do not match</p>
+          <span style={{ color: 'red' }}>
+            Passwords do not match
+            <br />
+          </span>
         )}
         <button type='submit'>Register</button>
+
+        {isPending ? <span>Creating...</span> : ''}
+        {isError ? <span>{errorMessage}</span> : ''}
         <p>
           Already have an account?
           <Link to={'/auth/login'}>Login.</Link>
