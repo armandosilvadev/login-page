@@ -4,19 +4,25 @@ import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Dashboard from '../pages/Dashboard';
 import ProtectedRoute from '../auth/components/ProtectedRoute';
+import PublicRoute from '../auth/components/PublicRoute';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    Component: Home,
-  },
-  {
-    path: '/auth/login',
-    Component: Login,
-  },
-  {
-    path: 'auth/register',
-    Component: Register,
+    Component: PublicRoute,
+    children: [
+      {
+        path: '/',
+        Component: Home,
+      },
+      {
+        path: '/auth/login',
+        Component: Login,
+      },
+      {
+        path: 'auth/register',
+        Component: Register,
+      },
+    ],
   },
   {
     Component: ProtectedRoute,
