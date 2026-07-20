@@ -2,20 +2,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import useLogin from '../auth/hooks/useLogin';
 import type { LoginData } from '../types/loginData';
 import { useState } from 'react';
+import type { AxiosError } from 'axios';
+import type { ApiError } from '../api/types/ApiError';
 
 const Test = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const { mutate } = useLogin();
+  const { mutate, isError, isPending } = useLogin();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setErrorMessage('');
+
     const loginData: LoginData = {
-      username,
+      username: username.trim(),
       password,
     };
 
@@ -23,6 +28,13 @@ const Test = () => {
       onSuccess: userData => {
         localStorage.setItem('token', userData.token);
         navigate('/dashboard');
+      },
+      onError: error => {
+        const axiosError = error as AxiosError<ApiError>;
+
+        setErrorMessage(
+          axiosError.response?.data.message ?? 'Error while trying to login.',
+        );
       },
     });
   };
@@ -58,6 +70,8 @@ const Test = () => {
           />
         </div>
         <button type='submit'>Login</button>
+        {isPending ? <span>Connecting...</span> : ''}
+        {isError ? <span>{errorMessage}</span> : ''}
         <p>
           Don't have an account?{' '}
           <Link to={'/auth/register'}>Click to register.</Link>

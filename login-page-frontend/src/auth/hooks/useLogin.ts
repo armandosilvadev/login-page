@@ -11,6 +11,6 @@ async function postData(data: LoginData): Promise<UserData> {
 export default function useLogin() {
   return useMutation({
     mutationFn: postData,
-    retry: 2,
+    retry: 1,
   });
 }
