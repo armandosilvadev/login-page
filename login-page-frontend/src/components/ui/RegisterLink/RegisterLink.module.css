@@ -1,0 +1,10 @@
+@import '../../../assets/styles/variables.css';
+
+.registerLink:link,
+.registerLink:visited {
+  color: var(--txt-register-color);
+}
+
+.registerLink:hover {
+  color: var(--txt-hover-register-color);
+}

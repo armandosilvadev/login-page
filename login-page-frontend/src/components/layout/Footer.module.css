@@ -1,0 +1,19 @@
+.footer {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+}
+
+.footer p {
+  margin-bottom: 1.4rem;
+}
+
+.footerList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}

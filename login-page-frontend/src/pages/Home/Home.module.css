@@ -1,0 +1,57 @@
+@import '../../assets/styles/variables.css';
+
+.home {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+  position: relative;
+}
+
+.homeContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px var(--bg-color-white-transparent);
+  border-radius: 1.4rem;
+  background-color: var(--bg-color-white-transparent);
+  box-shadow: var(--box-shadow);
+  width: 30%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+}
+
+.homeContainer h1 {
+  position: absolute;
+  top: 0;
+  font-size: 4.4rem;
+  padding: 1.4rem;
+}
+
+.homeContainer p {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.4rem;
+  padding: 1.2rem;
+}
+
+.loginLink {
+  position: relative;
+  top: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  border: solid 1px var(--txt-color);
+  border-radius: 5px;
+  padding: 8px 1.6rem;
+  transition: var(--transition);
+}
+
+.loginLink:hover {
+  border: solid 1px var(--txt-hover-color);
+  box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.1);
+  top: -1px;
+}

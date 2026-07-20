@@ -1,5 +1,35 @@
+@import './variables.css';
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+html {
+  font-size: 62.5%;
+  color: var(--txt-color);
+}
+
+body {
+  background: var(--bg-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+a:link {
+  color: var(--txt-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--txt-color);
+}
+
+a:hover {
+  color: var(--txt-hover-color);
+}
+
+a:active {
+  color: var(--txt-active-color);
 }
