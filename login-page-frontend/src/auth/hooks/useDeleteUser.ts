@@ -13,6 +13,7 @@ export default function useDeleteUser() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: deleteData,
+    retry: false,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-data'] });
     },
