@@ -3,12 +3,13 @@
   --bg-color: #282828;
   --bg-color-transparent: rgba(40, 40, 40, 0.5);
   --bg-color-white-transparent: rgba(255, 255, 255, 0.1);
-  --bg-color-white-transparent: rgba(255, 255, 255, 0.1);
 
   /* text colors */
   --txt-color: #ebdbb2;
   --txt-register-color: #b8bb26;
   --txt-hover-register-color: #b8c935;
+  --txt-login-color: #b8bb26;
+  --txt-hover-login-color: #b8c935;
   --txt-hover-color: #fbf1c7;
   --txt-active-color: #fdf8e3;
 

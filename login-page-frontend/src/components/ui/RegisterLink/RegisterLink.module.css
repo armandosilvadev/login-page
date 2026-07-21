@@ -3,6 +3,7 @@
 .registerLink:link,
 .registerLink:visited {
   color: var(--txt-register-color);
+  font-weight: 600;
 }
 
 .registerLink:hover {

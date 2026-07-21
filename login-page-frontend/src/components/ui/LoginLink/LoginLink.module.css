@@ -1,0 +1,10 @@
+@import '../../../assets/styles/variables.css';
+
+.loginLink:link,
+.loginLink:visited {
+  color: var(--txt-login-color);
+}
+
+.loginLink:hover {
+  color: var(--txt-hover-login-color);
+}
