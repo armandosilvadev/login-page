@@ -7,11 +7,12 @@ import type { AxiosError } from 'axios';
 import type { ApiError } from '../../api/types/ApiError';
 import Footer from '../../components/layout/Footer';
 import RegisterLink from '../../components/ui/RegisterLink/RegisterLink';
+import UsernameInput from '../../components/ui/UsernameInput/UsernameInput';
+import PasswordInput from '../../components/ui/PasswordInput/PasswordInput';
 
 const Test = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const { mutate, isError, isPending } = useLogin();
@@ -54,52 +55,30 @@ const Test = () => {
             onSubmit={handleSubmit}
             className={styles.loginForm}
           >
-            <div className={styles.errorMessageBox}>
-              {isPending && <span>Connecting...</span>}
-              {isError && <span>{errorMessage}</span>}
-            </div>
-            <div className={styles.usernameBox}>
-              <label htmlFor='username'>Username: </label>
-              <input
-                type='text'
-                name='username'
-                id='username'
-                required
-                onChange={e => setUsername(e.target.value)}
-              />
-            </div>
+            <UsernameInput
+              value={username}
+              handleOnChange={e => setUsername(e.target.value)}
+            />
 
-            <div className={styles.passwordBox}>
-              <label htmlFor='password'>Password: </label>
-              <div className={styles.passwordInput}>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  name='password'
-                  id='password'
-                  required
-                  onChange={e => setPassword(e.target.value)}
-                />
-                <button
-                  type='button'
-                  name='showPassword'
-                  id='showPassword'
-                  className={styles.showPassword}
-                  onClick={() => setShowPassword(prev => !prev)}
-                >
-                  {showPassword ? (
-                    <i className='fa-solid fa-eye'></i>
-                  ) : (
-                    <i className='fa-solid fa-eye-slash'></i>
-                  )}
-                </button>
-              </div>
-            </div>
+            <PasswordInput
+              id='password'
+              name='password'
+              value={password}
+              handleOnChange={e => setPassword(e.target.value)}
+            />
+
             <button
               type='submit'
               className={styles.loginBtn}
             >
               Login
             </button>
+
+            <div className={styles.errorMessageBox}>
+              {isPending && <span>Connecting...</span>}
+              {isError && <span>{errorMessage}</span>}
+            </div>
+
             <p>
               Don't have an account? <RegisterLink text='Click to register.' />
             </p>

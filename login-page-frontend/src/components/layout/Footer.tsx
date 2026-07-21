@@ -1,3 +1,4 @@
+import websiteLogo from '../../assets/img/logo_lighter.png';
 import styles from './Footer.module.css';
 import { Link } from 'react-router-dom';
 
@@ -16,10 +17,21 @@ const Footer = () => {
       </p>
       <ul className={styles.footerList}>
         <li>
-          <Link to={'https://armandodev.com.br/'}>Website</Link>
+          <Link
+            to={'https://armandodev.com.br/'}
+            target='_blank'
+            className={styles.websiteLink}
+          >
+            <img src={websiteLogo} /> Website
+          </Link>
         </li>
         <li>
-          <Link to={'https://github.com/armandosilvadev'}>Github</Link>
+          <Link
+            to={'https://github.com/armandosilvadev'}
+            target='_blank'
+          >
+            <i className='fa-brands fa-github'></i> Github
+          </Link>
         </li>
       </ul>
     </footer>

@@ -17,3 +17,22 @@
   gap: 2rem;
   list-style: none;
 }
+
+.footerList li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.websiteLink {
+  display: grid;
+  grid-template-columns: 1.4rem 1.4rem;
+  gap: 5px;
+  margin-right: 4rem;
+}
+
+.websiteLink img {
+  width: 1.4rem;
+  height: 1.4rem;
+}
