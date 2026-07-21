@@ -1,0 +1,22 @@
+.usernameBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.usernameBox label {
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-right: 5px;
+  text-align: left;
+}
+
+.usernameBox input {
+  background: none;
+  color: var(--txt-color);
+  font-weight: 500;
+  font-size: 1.6rem;
+  padding: 4px 10px;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: var(--bg-color-white-transparent);
+}

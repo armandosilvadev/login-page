@@ -1,17 +1,9 @@
-@import '../../assets/styles/variables.css';
-
-.login {
-  position: relative;
-  height: 100vh;
-  width: 100%;
+.registerContainer {
+  width: 30%;
+  height: 60%;
 }
 
-.loginContainer {
-  width: 50%;
-  height: 50%;
-}
-
-.loginForm {
+.registerForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,18 +13,22 @@
   gap: 2rem;
 }
 
-.errorMessageBox {
-  min-height: 2.2rem;
-}
-
-.loginForm p {
+.registerForm p {
   position: absolute;
   bottom: 0;
   font-size: 1.4rem;
   padding: 1.2rem;
 }
 
-.loginBtn {
+.passwordsMatch {
+  color: #cc241d;
+}
+
+.errorMessageBox {
+  min-height: 2.2rem;
+}
+
+.registerBtn {
   position: relative;
   margin-top: 2rem;
   background-color: var(--txt-color);
@@ -48,7 +44,7 @@
   transition: var(--transition);
 }
 
-.loginBtn:hover {
+.registerBtn:hover {
   background-color: var(--txt-hover-color);
   box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.1);
 }

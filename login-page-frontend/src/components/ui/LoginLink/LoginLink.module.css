@@ -3,6 +3,7 @@
 .loginLink:link,
 .loginLink:visited {
   color: var(--txt-login-color);
+  font-weight: 600;
 }
 
 .loginLink:hover {
