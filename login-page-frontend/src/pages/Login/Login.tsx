@@ -49,7 +49,7 @@ const Test = () => {
   return (
     <>
       <main className={styles.login}>
-        <div className={styles.loginContainer}>
+        <div className={`${styles.loginContainer} mainBoxStyle`}>
           <form
             onSubmit={handleSubmit}
             className={styles.loginForm}

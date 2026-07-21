@@ -7,19 +7,8 @@
 }
 
 .loginContainer {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--bg-color-white-transparent);
   width: 50%;
   height: 50%;
-  font-size: 1.8rem;
-
-  border: solid 1px var(--bg-color-white-transparent);
-  border-radius: 1.4rem;
-  background-color: var(--bg-color-white-transparent);
-  box-shadow: var(--box-shadow);
 }
 
 .loginForm {

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <main className={styles.home}>
-        <div className={styles.homeContainer}>
+        <div className={`${styles.homeContainer} mainBoxStyle`}>
           <h1>Welcome!</h1>
           <Link
             to={'/auth/login'}

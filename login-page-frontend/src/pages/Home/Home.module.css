@@ -7,21 +7,12 @@
 }
 
 .homeContainer {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid 1px var(--bg-color-white-transparent);
-  border-radius: 1.4rem;
-  background-color: var(--bg-color-white-transparent);
-  box-shadow: var(--box-shadow);
   width: 30%;
   height: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.8rem;
 }
 
 .homeContainer h1 {
