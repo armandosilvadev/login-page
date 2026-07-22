@@ -7,7 +7,7 @@ COPY . .
 RUN chmod +x mvnw
 RUN  ./mvnw clean package -DskipTests
 
-FROM eclipse-temruin:25-jre
+FROM eclipse-temurin:25-jre
 
 WORKDIR /app
 
