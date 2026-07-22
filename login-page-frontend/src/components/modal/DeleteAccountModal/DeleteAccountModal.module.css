@@ -1,0 +1,75 @@
+.deleteAccountContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  backdrop-filter: blur(18px);
+  background-color: var(--bg-color-transparent-4);
+  padding: 3rem;
+}
+
+.deleteAccountContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.deleteAccountContainer span {
+  font-weight: 500;
+}
+
+.errorMessage {
+  font-size: 1.4rem;
+  min-height: 1.7rem;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.btnContainer button {
+  background-color: transparent;
+  border: solid 2px;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 5px 10px;
+}
+
+.confirmBtn {
+  color: var(--warning-color);
+  border-color: var(--warning-color);
+}
+
+.confirmBtn:hover {
+  color: var(--warning-hover-color);
+  border-color: var(--warning-hover-color);
+}
+
+.cancelBtn {
+  color: var(--txt-color);
+  border-color: var(--txt-color);
+}
+
+.cancelBtn:hover {
+  color: var(--txt-hover-color);
+  border-color: var(--txt-hover-color);
+}
+
+.show {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}

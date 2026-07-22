@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import useDeleteUser from '../auth/hooks/useDeleteUser';
+import useDeleteUser from '../../../auth/hooks/useDeleteUser';
 import styles from './DeleteAccountModal.module.css';
-import type { DeleteData } from '../types/deleteData';
+import type { DeleteData } from '../../../types/deleteData';
 import { useNavigate } from 'react-router-dom';
 import type { AxiosError } from 'axios';
-import type { ApiError } from '../api/types/ApiError';
+import type { ApiError } from '../../../api/types/ApiError';
+import PasswordInput from '../../ui/PasswordInput/PasswordInput';
 
 interface DeleteAccountModalProps {
   isOpen: boolean;
@@ -17,8 +18,6 @@ const DeleteAccountModal = ({
 }: DeleteAccountModalProps) => {
   const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const { mutate, isPending, isError } = useDeleteUser();
 
@@ -52,13 +51,12 @@ const DeleteAccountModal = ({
   const handleCancel = () => {
     setPassword('');
     setErrorMessage('');
-    setShowPassword(false);
     handleIsOpen();
   };
 
   return (
     <div
-      className={`${styles.deleteAccountContainer} ${styles[isOpen ? 'show' : 'hidden']}`}
+      className={`${styles.deleteAccountContainer} ${styles[isOpen ? 'show' : 'hidden']} mainBoxStyle`}
     >
       <h3>
         Are you sure you want to delete your account? There's no way back!
@@ -66,34 +64,33 @@ const DeleteAccountModal = ({
       <span>Type your password to confirm</span>
       <form onSubmit={handleSubmit}>
         <div>
-          <input
-            type={showPassword ? 'text' : 'password'}
+          <PasswordInput
             id='password'
+            name=''
             value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-
-          <input
-            type='checkbox'
-            name='showPassword'
-            id='showPassword'
-            checked={showPassword}
-            onChange={e => setShowPassword(e.target.checked)}
+            handleOnChange={e => setPassword(e.target.value)}
           />
         </div>
 
-        <div>
-          <button type='submit'>Confirm</button>
+        <div className={styles.errorMessage}>
+          {isPending ? <span>Deleting...</span> : ''}
+          {isError ? <span>{errorMessage}</span> : ''}
+        </div>
+
+        <div className={styles.btnContainer}>
           <button
+            className={styles.confirmBtn}
+            type='submit'
+          >
+            Confirm
+          </button>
+          <button
+            className={styles.cancelBtn}
             type='button'
             onClick={handleCancel}
           >
             Cancel
           </button>
-        </div>
-        <div>
-          {isPending ? <span>Deleting...</span> : ''}
-          {isError ? <span>{errorMessage}</span> : ''}
         </div>
       </form>
     </div>

@@ -51,3 +51,7 @@ main {
   background-color: var(--bg-color-white-transparent);
   box-shadow: var(--box-shadow);
 }
+
+button {
+  cursor: pointer;
+}

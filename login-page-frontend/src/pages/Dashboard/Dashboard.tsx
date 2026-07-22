@@ -1,6 +1,6 @@
 import styles from './Dashboard.module.css';
 import useUser from '../../auth/hooks/useUser';
-import DeleteAccountModal from '../../components/DeleteAccountModal';
+import DeleteAccountModal from '../../components/modal/DeleteAccountModal/DeleteAccountModal';
 import { useState } from 'react';
 import LogoutModal from '../../components/LogoutModal';
 import Footer from '../../components/layout/Footer';
@@ -19,21 +19,11 @@ const Dashboard = () => {
     setIsDeleteModalOpen(false);
   };
 
-  const handleOnPageClick = () => {
-    if (isLogoutModalOpen || isDeleteModalOpen) {
-      setIsLogoutModalOpen(false);
-      setIsDeleteModalOpen(false);
-    }
-  };
-
   const { data, isLoading, isError } = useUser();
 
   return (
     <>
-      <main
-        className={styles.dashboard}
-        onClick={handleOnPageClick}
-      >
+      <main className={styles.dashboard}>
         <div className={`${styles.dashboardContainer} mainBoxStyle`}>
           {isError && (
             <h1 className={styles.errorMessage}>
