@@ -19,16 +19,49 @@ const Dashboard = () => {
     setIsDeleteModalOpen(false);
   };
 
-  const { data, isLoading } = useUser();
+  const handleOnPageClick = () => {
+    if (isLogoutModalOpen || isDeleteModalOpen) {
+      setIsLogoutModalOpen(false);
+      setIsDeleteModalOpen(false);
+    }
+  };
+
+  const { data, isLoading, isError } = useUser();
 
   return (
     <>
-      <main className={styles.dashboard}>
+      <main
+        className={styles.dashboard}
+        onClick={handleOnPageClick}
+      >
         <div className={`${styles.dashboardContainer} mainBoxStyle`}>
-          <h1>{isLoading ? 'Loading...' : `Hello ${data?.username}!`}</h1>
-          <div>
-            <button onClick={handleIsLogoutModalOpen}>Logout</button>
-            <button onClick={handleIsDeleteModalOpen}>Delete account</button>
+          {isError && (
+            <h1 className={styles.errorMessage}>
+              Error when trying to load user.
+            </h1>
+          )}
+          <h1>
+            {isLoading ? (
+              'Loading...'
+            ) : (
+              <span>
+                Hello <span className={styles.username}>{data?.username}</span>!
+              </span>
+            )}
+          </h1>
+          <div className={styles.btnContainer}>
+            <button
+              className={styles.logoutBtn}
+              onClick={handleIsLogoutModalOpen}
+            >
+              Logout
+            </button>
+            <button
+              className={styles.deleteAccountBtn}
+              onClick={handleIsDeleteModalOpen}
+            >
+              Delete account
+            </button>
           </div>
 
           <DeleteAccountModal

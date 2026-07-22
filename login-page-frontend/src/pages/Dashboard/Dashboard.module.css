@@ -1,3 +1,5 @@
+@import '../../assets/styles/variables.css';
+
 .dashboardContainer {
   display: flex;
   flex-direction: column;
@@ -5,4 +7,53 @@
   align-items: center;
   width: 50%;
   height: 50%;
+}
+
+.dashboardContainer h1 {
+  font-weight: 400;
+}
+
+.username {
+  font-weight: 600;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.logoutBtn {
+  position: relative;
+  top: 0;
+
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--bg-color);
+  background-color: var(--txt-color);
+
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  padding: 4px 10px;
+}
+
+.logoutBtn:hover {
+  background-color: var(--txt-hover-color);
+  box-sizing: var(--btn-hover-box-shadow);
+}
+
+.deleteAccountBtn {
+  color: var(--txt-color);
+  background-color: var(--warning-color);
+
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  padding: 4px 10px;
+}
+
+.deleteAccountBtn:hover {
+  background-color: var(--warning-hover-color);
+  box-sizing: var(--btn-hover-box-shadow);
 }
