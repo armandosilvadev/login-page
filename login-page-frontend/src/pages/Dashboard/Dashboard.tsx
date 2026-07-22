@@ -2,7 +2,7 @@ import styles from './Dashboard.module.css';
 import useUser from '../../auth/hooks/useUser';
 import DeleteAccountModal from '../../components/modal/DeleteAccountModal/DeleteAccountModal';
 import { useState } from 'react';
-import LogoutModal from '../../components/LogoutModal';
+import LogoutModal from '../../components/modal/LogouModal/LogoutModal';
 import Footer from '../../components/layout/Footer';
 
 const Dashboard = () => {

@@ -56,7 +56,7 @@ const DeleteAccountModal = ({
 
   return (
     <div
-      className={`${styles.deleteAccountContainer} ${styles[isOpen ? 'show' : 'hidden']} mainBoxStyle`}
+      className={`${styles.deleteAccountContainer} ${styles[isOpen ? 'show' : 'hidden']} mainBoxStyle modalStyle`}
     >
       <h3>
         Are you sure you want to delete your account? There's no way back!

@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  background: var(--bg-color);
+  background: linear-gradient(to bottom right, var(--bg-color) 50%, var(--bg-color-ligther)) ;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -50,6 +50,23 @@ main {
   border-radius: 1.4rem;
   background-color: var(--bg-color-white-transparent);
   box-shadow: var(--box-shadow);
+}
+
+.modalStyle {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  backdrop-filter: blur(18px);
+  background-color: var(--bg-color-transparent-4);
+  padding: 3rem;
 }
 
 button {

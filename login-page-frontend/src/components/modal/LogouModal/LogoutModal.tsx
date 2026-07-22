@@ -16,10 +16,10 @@ const LogoutModal = ({ isOpen, handleIsOpen }: LogoutModalProps) => {
 
   return (
     <div
-      className={`${styles.logoutContainer} ${styles[isOpen ? 'show' : 'hidden']}`}
+      className={`${styles.logoutContainer} ${styles[isOpen ? 'show' : 'hidden']} mainBoxStyle modalStyle`}
     >
       <h3>Are you sure you want to logout?</h3>
-      <div>
+      <div className={styles.btnContainer}>
         <button onClick={handleLogout}>Yes</button>
         <button onClick={handleIsOpen}>No</button>
       </div>

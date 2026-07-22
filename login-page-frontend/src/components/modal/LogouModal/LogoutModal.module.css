@@ -1,0 +1,38 @@
+.logoutContainer {
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.btnContainer button {
+  color: var(--txt-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: solid 2px var(--txt-color);
+  border-radius: 5px;
+  padding: 5px 1.4rem;
+}
+
+.btnContainer button:hover {
+  color: var(--txt-hover-color);
+  border-color: var(--txt-hover-color);
+}
+
+.show {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
