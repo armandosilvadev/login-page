@@ -11,6 +11,6 @@ export default function () {
   return useQuery({
     queryFn: fetchData,
     queryKey: ['user-data'],
-    retry: 2,
+    retry: 1,
   });
 }

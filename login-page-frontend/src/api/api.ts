@@ -18,6 +18,13 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(
   response => response,
   error => {
+    const isLoginRequest = error.config.url === '/auth/login';
+    const isDeleteRequest = error.config.url === '/auth';
+
+    if (error.response?.status === 401 && !isLoginRequest && !isDeleteRequest) {
+      localStorage.removeItem('token');
+      window.location.href = '/';
+    }
     return Promise.reject(error);
   },
 );
